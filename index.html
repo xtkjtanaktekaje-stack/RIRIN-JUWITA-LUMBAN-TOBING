@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hai rin, klik ini ya</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f451c3 0%, #ffff 99%, #ffff 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.8509803921568627);
+      backdrop-filter: blur(10px);
+      padding: 40px 30px;
+      border-radius: 24px;
+      box-shadow: 0 15px 35px rgba(255, 105, 180, 0.2);
+      max-width: 450px;
+      width: 100%;
+      z-index: 10;
+    }
+
+    h1 {
+      color: #f451c3;
+      font-size: 1.8rem;
+      margin-bottom: 25px;
+    }
+
+    .btn-love {
+      background: linear-gradient(45deg, #f451c3, #ffffff);
+      color: white;
+      border: none;
+      padding: 16px 36px;
+      font-size: 1.4rem;
+      font-weight: bold;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(5, 30, 110, 0.4);
+      transition: all 0.3s ease;
+      outline: none;
+    }
+
+    .btn-love:hover {
+      transform: scale(1.08);
+      box-shadow: 0 12px 25px rgba(22, 3, 118, 0.6);
+    }
+
+    .btn-love:active {
+      transform: scale(0.95);
+    }
+
+    .message-box {
+      display: none;
+      margin-top: 25px;
+      animation: popup 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+
+    .message-box h2 {
+      color: #080a82;
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+    }
+
+    .message-box p {
+      color: #0a0a74;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+
+    .heart-bg {
+      position: absolute;
+      color: rgba(7, 23, 127, 0.6);
+      font-size: 24px;
+      pointer-events: none;
+      animation: float 6s linear infinite;
+    }
+
+    @keyframes popup {
+      0% {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <button class="btn-love" id="loveBtn" onclick="showBirthdayMessage()">Klik ini rin</button>
+
+    <div class="message-box" id="msgBox">
+      <h2>RIRIN DONGO</h2>
+      <p>ahahaha udah dongo, oon mirip monyet</p>
+      <p>gelud yuk sini sama aku ahahahay</p>
+    </div>
+  </div>
+
+  <script>
+    function showBirthdayMessage() {
+      // Sembunyikan tombol "Klik ini ser"
+      document.getElementById('loveBtn').style.display = 'none';
+
+      // Tampilkan pesan ucapan
+      document.getElementById('msgBox').style.display = 'block';
+
+      // Buat efek hati terbang
+      for (let i = 0; i < 25; i++) {
+        createHeart();
+      }
+    }
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart-bg');
+      heart.innerHTML = '🐒';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = Math.random() * 1 + 1+ 's';
+      heart.style.fontSize = Math.random() * 30 + 25 + 'px';
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 6000);
+    }
+  </script>
+
+</body>
+</html>
